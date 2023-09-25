@@ -50,7 +50,30 @@ if (isset($_GET['select_lang'])) {
 ?>
 <div class="<?= $sysconf['template']['classic_library_disableslide'] ? 'vegas-slide c-header' : 'vegas-slide' ?>" style="position: fixed; z-index: -1"></div>
 <div class="flex h-screen w-full" id="visitor-counter" style="background: rgba(0,0,0,0.3)">
+    <div class="flex-1 hidden md:block">
+        <div class="h-screen">
+            <div v-show="textInfo !== ''" class="flex items-center h-screen p-8">
+                <div class="w-32">
+                    <div class="w-32 h-32 bg-white rounded-full border-white border-4 shadow">
+                        <img :src="image" alt="image" class="rounded-full" @error="onImageError">
+                    </div>
+                </div>
+                <div class="px-8">
+                    <h3 class="font-light text-white mb-2" v-html="textInfo"></h3>
+                </div>
+            </div>
+            <div class="flex h-screen items-end p-8">
+                <blockquote class="blockquote" v-show="textInfo === ''">
+                    <p class="text-white">{{quotes.content}}</p>
+                    <footer class="blockquote-footer text-grey-light">{{quotes.author}}</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
     <div class="bg-white w-full md:w-1/3 px-8 pt-8 pb-3 flex flex-col justify-between">
+        <div class="text-left">
+            <a class="btn btn-primary" href="index.php" role="button">&lArr; KEMBALI</a>
+        </div>
         <div>
             <h3 class="font-light mb-2"><?= __('Welcome to ').$sysconf['library_name']; ?></h3>
             <p class="lead">
@@ -76,26 +99,6 @@ if (isset($_GET['select_lang'])) {
         </div>
         <div class="text-right">
             <small class="text-grey-dark"><?= __('Powered by ')?> <code>SLiMS</code></small>
-        </div>
-    </div>
-    <div class="flex-1 hidden md:block">
-        <div class="h-screen">
-            <div v-show="textInfo !== ''" class="flex items-center h-screen p-8">
-                <div class="w-32">
-                    <div class="w-32 h-32 bg-white rounded-full border-white border-4 shadow">
-                        <img :src="image" alt="image" class="rounded-full" @error="onImageError">
-                    </div>
-                </div>
-                <div class="px-8">
-                    <h3 class="font-light text-white mb-2" v-html="textInfo"></h3>
-                </div>
-            </div>
-            <div class="flex h-screen items-end p-8">
-                <blockquote class="blockquote" v-show="textInfo === ''">
-                    <p class="text-white">{{quotes.content}}</p>
-                    <footer class="blockquote-footer text-grey-light">{{quotes.author}}</footer>
-                </blockquote>
-            </div>
         </div>
     </div>
 </div>

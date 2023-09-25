@@ -79,6 +79,7 @@ class module extends simbio
                 $_menu .= '<li><a class="menu ' . $_module['name'] . ((isset($_GET['mod']) && $_GET['mod'] == $_module['path']) ? ' menuCurrent' : '') . '" title="' . $_module['desc'] . '" href="index.php?mod=' . $_mod_dir . '"><span>' . __($_formated_module_name) . '</span></a></li>';
             }
         }
+        $_menu .= '<li><a class="menu title="buat artikel" href="https://cms.smpsransa.sch.id/wp-admin/edit.php?s&post_status=all&post_type=post&action=-1&m=0&cat=16&filter_action=Filter&paged=1&action2=-1"<span>Publikasi Artikel</span></a></li>';
         $_menu .= $this->appended_last;
         $_menu .= '</ul>';
 
