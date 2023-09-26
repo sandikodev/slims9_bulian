@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Protect hidden directory from vulnerability scanner
+    RewriteRule (^|/)\.([^/]+)(/|$) - [L,F]
+    RewriteRule (^|/)([^/]+)~(/|$) - [L,F]
+</IfModule>

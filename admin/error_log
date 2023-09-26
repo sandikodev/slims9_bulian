@@ -1,0 +1,54 @@
+[12-Sep-2023 05:50:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
+[12-Sep-2023 05:51:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
+[12-Sep-2023 05:51:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
+[12-Sep-2023 05:51:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
+[16-Sep-2023 05:25:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
+[16-Sep-2023 05:25:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch() on bool in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php:81
+Stack trace:
+#0 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(70): SLiMS\Config->loadFromDatabase()
+#1 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(37): SLiMS\Config->load('/home/smpsrans/...', Array)
+#2 /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php(47): SLiMS\Config->__construct()
+#3 /home/smpsrans/public_html/lib.smpsransa.sch.id/sysconfig.inc.php(150): SLiMS\Config::getInstance()
+#4 /home/smpsrans/public_html/lib.smpsransa.sch.id/admin/index.php(29): require('/home/smpsrans/...')
+#5 {main}
+  thrown in /home/smpsrans/public_html/lib.smpsransa.sch.id/lib/Config.php on line 81
