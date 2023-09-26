@@ -637,7 +637,7 @@ $sysconf['load_balanced_source_ip'] = 'HTTP_X_FORWARDED_FOR';
 
 // visitor limitation
 $sysconf['enable_counter_by_ip'] = true;
-$sysconf['allowed_counter_ip'] = ['127.0.0.1'];
+$sysconf['allowed_counter_ip'] = ['0.0.0.0'];
 $sysconf['enable_visitor_limitation']     = false; // "true" or "false"
 $sysconf['time_visitor_limitation']       = 60; // in minute
 

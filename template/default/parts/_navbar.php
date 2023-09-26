@@ -30,7 +30,7 @@ $main_menus = [
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-  <a class="navbar-brand inline-flex items-center" href="index.php">
+  <a class="navbar-brand inline-flex items-center" href="https://perpus.smpsransa.sch.id">
     <?php
     if (isset($sysconf['logo_image']) && $sysconf['logo_image'] != '' && file_exists('images/default/' . $sysconf['logo_image'])) {
       echo '<img class="h-10 w-15" src="images/default/' . v($sysconf['logo_image']) . '">';
