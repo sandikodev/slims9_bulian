@@ -53,3 +53,6 @@ config/database.php
 config/captcha.php
 config/env.php
 tarsius
+
+# Docker dev environment
+.docker/.env

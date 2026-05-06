@@ -1,0 +1,59 @@
+# SLiMS Development Environment
+# Untuk testing kontribusi sandikodev ke slims/slims9_bulian
+# Gunakan: docker compose up -d
+
+name: slims-dev
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    container_name: slims-dev-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SLIMS_DB_HOST: slims-dev-db
+      SLIMS_DB_PORT: '3306'
+      SLIMS_DB_NAME: ${DB_NAME:-slims}
+      SLIMS_DB_USER: ${DB_USER:-slims}
+      SLIMS_DB_PASSWORD: ${DB_PASSWORD:-slims}
+    volumes:
+      # Mount source langsung — perubahan kode langsung terlihat tanpa rebuild
+      - ..:/var/www/html/slims
+      - slims-files:/var/www/html/slims/files
+      - slims-images:/var/www/html/slims/images
+    ports:
+      - "${APP_PORT:-8080}:80"
+    networks:
+      - internal
+
+  db:
+    image: mariadb:10.11
+    container_name: slims-dev-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-slims}
+      MYSQL_USER: ${DB_USER:-slims}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-slims}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+
+volumes:
+  db-data:
+  slims-files:
+  slims-images:
+
+networks:
+  internal:
+    driver: bridge
