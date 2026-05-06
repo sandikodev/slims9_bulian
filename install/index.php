@@ -13,7 +13,6 @@ if (file_exists(__DIR__ . '/../config/database.php')) {
 session_start();
 $length = 24;
 $_SESSION['csrf_token'] = bin2hex(substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length));
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -94,20 +93,9 @@ $_SESSION['csrf_token'] = bin2hex(substr(str_shuffle(str_repeat($x='0123456789ab
     </style>
 </head>
 <body class="bg-gray-800">
-<div id="app" class="bg-transparent font-light">
-    <welcome v-if="section === 'welcome'" @click="section = 'system'"></welcome>
-    <system v-if="section === 'system'" @click="section = 'select-task'"></system>
-    <tasks v-if="section === 'select-task'" @click="selectTask"></tasks>
-    <install v-if="section === 'install'" @next="section = 'create-admin'"></install>
-    <upgrade v-if="section === 'upgrade'" @next="section = 'select-version'"></upgrade>
-    <select-version v-if="section === 'select-version'" @success="section = 'success'"></select-version>
-    <account v-if="section === 'create-admin'" @notwrite="setSection('show-config', 'create-admin')"
-             @success="section = 'success'"></account>
-    <show-config v-if="section === 'show-config'" :section="lastSection"></show-config>
-    <success v-if="section === 'success'"></success>
-</div>
+<div id="app" class="bg-transparent font-light"></div>
 <!-- Required JavaScript -->
 <script src="js/vue.min.js"></script>
-<script src="js/main.js?v=<? date('YmdHis'); ?>" type="module" csrf="<?= $_SESSION['csrf_token'] ?>"></script>
+<script src="js/main.js?v=<?= filemtime(__DIR__ . '/js/main.js') ?>" type="module" csrf="<?= $_SESSION['csrf_token'] ?>"></script>
 </body>
 </html>

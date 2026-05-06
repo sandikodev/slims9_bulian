@@ -2,112 +2,70 @@ import Logo from '../components/Logo.js'
 import SlimsText from '../components/SlimsText.js'
 import SlimsTextVertical from '../components/SlimsTextVertical.js'
 import Version from '../components/Version.js'
-import {Token} from "../js/utils.js";
+import { Token } from '../js/utils.js'
+
+const inputClass = 'md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+const labelClass = 'block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1'
 
 export default {
     name: 'Upgrade',
-    components: {
-        Logo,
-        SlimsText,
-        SlimsTextVertical,
-        Version
-    },
+    components: { Logo, SlimsText, SlimsTextVertical, Version },
     data() {
-        return {
-            host: 'localhost',
-            port: '3306',
-            name: '',
-            user: '',
-            pass: '',
-            isPass: null,
-            field: '',
-            message: ''
-        }
+        return { host: 'localhost', port: '3306', name: '', user: '', pass: '', isPass: null, field: '', message: '', btnLabel: 'Test Connection' }
     },
     methods: {
         testConnection() {
+            if (this.btnLabel === 'Please Wait') return
+            this.btnLabel = 'Please Wait'
             fetch('./api.php', {
                 method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${Token}`,
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    action: 'test-connection-upgrade',
-                    host: this.host,
-                    port: this.port,
-                    name: this.name,
-                    user: this.user,
-                    pass: this.pass
-                })
+                headers: { Authorization: `Bearer ${Token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'test-connection-upgrade', host: this.host, port: this.port, name: this.name, user: this.user, pass: this.pass })
             })
                 .then(res => res.json())
                 .then(res => {
+                    this.btnLabel = 'Test Connection'
                     this.isPass = res.status
                     this.message = res.message
                     this.field = res.field
-                    switch (this.field) {
-                        case "name":
-                            this.$refs.db_name.focus()
-                            break;
-                        case "user":
-                            this.$refs.db_user.focus()
-                            break;
-                    }
+                    if (this.field === 'name') this.$refs.db_name.focus()
+                    if (this.field === 'user') this.$refs.db_user.focus()
                 })
         }
     },
-    template: `<div class="min-h-screen flex">
-<div class="w-20 p-4">
-    <div><logo></logo></div>
-    <slims-text-vertical class="text-lg font-medium text-gray-200 pt-4"></slims-text-vertical>
-    <version></version>
-</div>
-<div class="flex-1 bg-gray-100 py-8 px-16">
-    <h1 class="text-3xl font-medium">Upgrade my previous <slims-text></slims-text><span class="text-gray-500 text-lg"><span class="pl-4 pr-2">&mdash;</span> 1 of 2</span></h1>
-    <p class="text-lg text-gray-700 tracking-wide mb-4">Please follow the instructions and fill the form if required</p>
-    
-    <h2 class="font-medium text-lg">Database information</h2>
-    <p>Please complete the following form with your database connection parameters/settings</p>
-    
-    <div v-if="!isPass && message !== ''" class="rounded border bg-pink-200 border-pink-500 text-pink-500 px-4 py-2 my-2 md:w-1/2">{{message}}</div>
-    
-    <form class="w-full max-w-xl" @submit.prevent="testConnection">
-      <div class="w-full mt-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1" for="grid-last-name">
-            Database host
-          </label>
-          <input required v-model="host" id="db_host" class="md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Enter host">
-      </div>
-      <div class="w-full mt-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1" for="grid-last-name">
-            Database port
-          </label>
-          <input required v-model="port" ref="db_port" id="db_port" class="md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Enter port">
-      </div>
-      <div class="w-full mt-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1" for="grid-last-name">
-            Database name
-          </label>
-          <input required v-model="name" ref="db_name" id="db_name" class="md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Enter database name">
-      </div>
-      <div class="w-full mt-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1" for="grid-last-name">
-            Database username
-          </label>
-          <input required v-model="user" ref="db_user" id="db_user" class="md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Enter username">
-      </div>
-      <div class="w-full mt-3">
-          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1" for="grid-last-name">
-            Database password
-          </label>
-          <input v-model="pass" id="db_pass" class="md:w-1/2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="Enter password">
-      </div>
-      
-      <button v-if="!isPass" type="submit" class="mt-4 mb-4 rounded-full bg-gray-500 py-2 px-4 text-gray-100 hover:bg-gray-700 focus:outline-none focus:bg-gray-600">Test Connection</button>
-      <button v-if="isPass" type="button" @click="$emit('next')" class="mt-4 mb-4 rounded-full bg-green-500 py-2 px-4 text-green-100 hover:bg-green-700 focus:outline-none focus:bg-green-600">Connection OK. Next</button>
-    </form>
-</div>
-</div>`
+    render(h) {
+        const sidebar = h('div', { class: 'w-20 p-4' }, [h('div', [h('logo')]), h('slims-text-vertical', { class: 'text-lg font-medium text-gray-200 pt-4' }), h('version')])
+
+        const field = (label, id, model, type = 'text', ref = null) =>
+            h('div', { class: 'w-full mt-3' }, [
+                h('label', { class: labelClass, attrs: { for: id } }, label),
+                h('input', {
+                    class: inputClass,
+                    attrs: { id, type, placeholder: `Enter ${label.toLowerCase()}`, required: type !== 'password' },
+                    ref,
+                    domProps: { value: this[model] },
+                    on: { input: e => { this[model] = e.target.value } }
+                }),
+            ])
+
+        return h('div', { class: 'min-h-screen flex' }, [
+            sidebar,
+            h('div', { class: 'flex-1 bg-gray-100 py-8 px-16' }, [
+                h('h1', { class: 'text-3xl font-medium' }, ['Upgrade my previous ', h('slims-text'), h('span', { class: 'text-gray-500 text-lg' }, [h('span', { class: 'pl-4 pr-2' }, '\u2014'), ' 1 of 2'])]),
+                h('p', { class: 'text-lg text-gray-700 tracking-wide mb-4' }, 'Please follow the instructions and fill the form if required'),
+                h('h2', { class: 'font-medium text-lg' }, 'Database information'),
+                h('p', 'Please complete the following form with your database connection parameters/settings'),
+                (!this.isPass && this.message) ? h('div', { class: 'rounded border bg-pink-200 border-pink-500 text-pink-500 px-4 py-2 my-2 md:w-1/2' }, this.message) : null,
+                h('form', { class: 'w-full max-w-xl', on: { submit: e => { e.preventDefault(); this.testConnection() } } }, [
+                    field('Database host', 'db_host', 'host'),
+                    field('Database port', 'db_port', 'port'),
+                    field('Database name', 'db_name', 'name', 'text', 'db_name'),
+                    field('Database username', 'db_user', 'user', 'text', 'db_user'),
+                    field('Database password', 'db_pass', 'pass', 'password'),
+                    !this.isPass ? h('button', { class: 'mt-4 mb-4 rounded-full bg-gray-500 py-2 px-4 text-gray-100 hover:bg-gray-700 focus:outline-none focus:bg-gray-600', attrs: { type: 'submit' } }, this.btnLabel) : null,
+                    this.isPass ? h('button', { class: 'mt-4 mb-4 rounded-full bg-green-500 py-2 px-4 text-green-100 hover:bg-green-700 focus:outline-none focus:bg-green-600', attrs: { type: 'button' }, on: { click: () => this.$emit('next') } }, 'Connection OK. Next') : null,
+                ])
+            ])
+        ])
+    }
 }

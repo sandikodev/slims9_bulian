@@ -1,10 +1,12 @@
 export default {
     name: 'SlimsTextVertical',
-    template: `<div class="flex flex-col items-center">
-<div>S</div>
-<div>L</div>
-<div class="text-yellow-500">i</div>
-<div>M</div>
-<div>S</div>
-</div>`
+    render(h) {
+        return h('div', { class: 'flex flex-col items-center' }, [
+            h('div', 'S'),
+            h('div', 'L'),
+            h('div', { class: 'text-yellow-500' }, 'i'),
+            h('div', 'M'),
+            h('div', 'S'),
+        ])
+    }
 }

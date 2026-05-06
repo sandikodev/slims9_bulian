@@ -1,4 +1,6 @@
 export default {
     name: 'Version',
-    template: `<div class="slims-version">SLiMS version 9 &mdash; Bulian</div>`
+    render(h) {
+        return h('div', { class: 'slims-version' }, ['SLiMS version 9 \u2014 Bulian'])
+    }
 }
